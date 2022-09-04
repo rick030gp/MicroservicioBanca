@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+		<UserSecretsId>0d21b845-eb32-42a0-b217-7ce5b4446480</UserSecretsId>
+		<DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+		<DockerfileContext>..\..</DockerfileContext>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.11.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.17">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\src\MicroservicioBanca.Application\MicroservicioBanca.Application.csproj" />
+		<ProjectReference Include="..\..\src\MicroservicioBanca.Dependencies\MicroservicioBanca.Dependencies.csproj" />
+		<ProjectReference Include="..\..\src\MicroservicioBanca.Repository\MicroservicioBanca.Repository.csproj" />
+	</ItemGroup>
+
+</Project>
