@@ -32,11 +32,15 @@ namespace MicroservicioBanca.WebApi
                 options.UseSqlServer(Configuration.GetConnectionString("Banca")));
 
             services.AddControllers();
-            ServicesDependency.AddRegistration(services);
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MicroservicioBanca.WebApi", Version = "v1" });
             });
+
+            // Register the service and implementation for the database context
+            services.AddScoped<IMicroservicioBancaDbContext>(provider => provider.GetService<MicroservicioBancaDbContext>());
+            //Inversion of control
+            services.AddRegistration();
 
             // Mapper
             var mapperConfig = new MapperConfiguration(m =>
