@@ -49,15 +49,15 @@ namespace MicroservicioBanca.Domain.Cuentas
 
         public async Task<Cuenta> UpdateAsync(
             string numeroCuenta,
-            TipoCuenta tipoCuenta,
-            bool estado)
+            TipoCuenta? tipoCuenta,
+            bool? estado)
         {
             var cuenta = await _cuentaRepository.GetByAccountNumberAsync(numeroCuenta);
             if (cuenta == null)
                 throw new MicroservicioBancaException(MicroservicioBancaErrors.AccountDoesNotExistError);
 
-            cuenta.TipoCuenta = tipoCuenta;
-            cuenta.Estado = estado;
+            cuenta.TipoCuenta = tipoCuenta ?? cuenta.TipoCuenta;
+            cuenta.Estado = estado ?? cuenta.Estado;
 
             await _cuentaRepository.UpdateAsync(cuenta);
             return cuenta;

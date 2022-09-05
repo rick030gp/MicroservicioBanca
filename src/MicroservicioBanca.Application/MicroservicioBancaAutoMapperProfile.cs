@@ -13,6 +13,7 @@ namespace MicroservicioBanca.Application
         public MicroservicioBancaAutoMapperProfile()
         {
             CreateMap<Cliente, ClienteDto>();
+            CreateMap<Cliente, ClienteCompletoDto>();
             CreateMap<Cuenta, CuentaDto>();
             CreateMap<Movimiento, MovimientoDto>();
         }

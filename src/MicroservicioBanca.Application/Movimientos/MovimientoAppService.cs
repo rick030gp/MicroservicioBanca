@@ -9,7 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace MicroservicioBanca.Application
+namespace MicroservicioBanca.Application.Movimientos
 {
     public class MovimientoAppService : IMovimientoAppService
     {

@@ -47,24 +47,25 @@ namespace MicroservicioBanca.Domain.Clientes
         public async Task<Cliente> UpdateAsync(
             string identificacion,
             string nombre,
-            Genero genero,
-            short edad,
+            Genero? genero,
+            short? edad,
             string direccion,
             string telefono,
             string contrasenia,
-            bool estado)
+            bool? estado)
         {
             var cliente = await _clienteRepository.GetByIdentificationAsync(identificacion);
             if (cliente == null)
                 throw new MicroservicioBancaException(MicroservicioBancaErrors.ClientNotFoundError);
 
-            cliente.Nombre = nombre;
-            cliente.Genero = genero;
-            cliente.Edad = edad;
-            cliente.Direccion = direccion;
-            cliente.Telefono = telefono;
-            cliente.CambiarContrasenia(contrasenia);
-            cliente.Estado = estado;
+
+            cliente.Nombre = nombre ?? cliente.Nombre;
+            cliente.Genero = genero ?? cliente.Genero;
+            cliente.Edad = edad ?? cliente.Edad;
+            cliente.Direccion = direccion ?? cliente.Direccion;
+            cliente.Telefono = telefono ?? cliente.Telefono;
+            cliente.CambiarContrasenia(contrasenia ?? cliente.Contrasenia);
+            cliente.Estado = estado ?? cliente.Estado;
 
             await _clienteRepository.UpdateAsync(cliente);
             return cliente;

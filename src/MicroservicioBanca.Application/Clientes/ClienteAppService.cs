@@ -42,7 +42,34 @@ namespace MicroservicioBanca.Application.Clientes
             {
                 return response.OnError(MicroservicioBancaErrors.GeneralError);
             }
+        }
 
+        public async Task<Response<ClienteCompletoDto>> GetAccountsStatementAsync(string identificacionCliente, DateTime fechaInicial, DateTime? fechaFinal = null)
+        {
+            ResponseManager<ClienteCompletoDto> response = new();
+            try
+            {
+                if (fechaInicial > fechaFinal)
+                    return response.OnError(MicroservicioBancaErrors.ReportDatesError);
+
+                var cliente = await _clienteRepository.GetWithAccountsByIdentificationAndDatesAsync(
+                    identificacionCliente,
+                    fechaInicial,
+                    fechaFinal);
+
+                if (cliente == null)
+                    return response.OnError(MicroservicioBancaErrors.ClientNotFoundError);
+
+                return response.OnSuccess(_mapper.Map<ClienteCompletoDto>(cliente));
+            }
+            catch (MicroservicioBancaException ex)
+            {
+                return response.OnError(new Error(ex));
+            }
+            catch (Exception)
+            {
+                return response.OnError(MicroservicioBancaErrors.GeneralError);
+            }
         }
 
         public async Task<Response<List<ClienteDto>>> GetAllAsync()

@@ -1,9 +1,9 @@
-﻿using MicroservicioBanca.Application;
-using MicroservicioBanca.Application.Clientes;
+﻿using MicroservicioBanca.Application.Clientes;
 using MicroservicioBanca.Application.Contracts.Clientes;
 using MicroservicioBanca.Application.Contracts.Cuentas;
 using MicroservicioBanca.Application.Contracts.Movimientos;
 using MicroservicioBanca.Application.Cuentas;
+using MicroservicioBanca.Application.Movimientos;
 using MicroservicioBanca.Domain.Clientes;
 using MicroservicioBanca.Domain.Cuentas;
 using MicroservicioBanca.Domain.Movimientos;

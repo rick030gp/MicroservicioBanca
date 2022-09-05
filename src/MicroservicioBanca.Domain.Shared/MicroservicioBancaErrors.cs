@@ -49,6 +49,11 @@ namespace MicroservicioBanca.Domain.Shared
             Code = "ECT007",
             Message = "No se puede agregar una transacción de 0"
         };
+        public static readonly Error ReportDatesError = new()
+        {
+            Code = "ECT008",
+            Message = "Rango no válido entre las fechas"
+        };
         public static readonly Error GeneralError = new()
         {
             Code = "ERR000",

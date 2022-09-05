@@ -7,7 +7,7 @@ namespace MicroservicioBanca.Application.Contracts.Cuentas
     {
         [Required]
         public string NumeroCuenta { get; set; }
-        public TipoCuenta TipoCuenta { get; set; }
-        public bool Estado { get; set; }
+        public TipoCuenta? TipoCuenta { get; set; }
+        public bool? Estado { get; set; }
     }
 }

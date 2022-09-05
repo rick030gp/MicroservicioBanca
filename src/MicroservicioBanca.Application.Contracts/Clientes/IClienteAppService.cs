@@ -1,4 +1,5 @@
 ﻿using MicroservicioBanca.Domain.Shared.Response.Models;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -11,5 +12,7 @@ namespace MicroservicioBanca.Application.Contracts.Clientes
         Task<Response<ClienteDto>> InsertAsync(AddClienteDto input);
         Task<Response<ClienteDto>> UpdateAsync(UpdateClienteDto input);
         Task<Response<string>> DeleteAsync(string identification);
+        Task<Response<ClienteCompletoDto>> GetAccountsStatementAsync(
+            string identificacionCliente, DateTime fechaInicial, DateTime? fechaFinal = null);
     }
 }
