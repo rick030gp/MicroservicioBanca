@@ -1,4 +1,5 @@
-﻿using MicroservicioBanca.Domain.Shared.Cuentas;
+﻿using MicroservicioBanca.Application.Contracts.Movimientos;
+using MicroservicioBanca.Domain.Shared.Cuentas;
 using System;
 using System.Collections.Generic;
 

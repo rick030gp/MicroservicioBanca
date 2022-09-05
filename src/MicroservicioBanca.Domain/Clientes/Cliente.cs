@@ -13,6 +13,10 @@ namespace MicroservicioBanca.Domain.Clientes
         public bool Estado { get; set; } = true;
         public List<Cuenta> Cuentas { get; set; }
 
+        private Cliente()
+        {
+        }
+
         internal Cliente(
             Guid id,
             string nombre,
@@ -34,17 +38,6 @@ namespace MicroservicioBanca.Domain.Clientes
             Contrasenia = contrasenia;
             Estado = estado;
             Cuentas = new List<Cuenta>();
-        }
-
-        internal void AgregarCuenta(
-            Guid id,
-            string numeroCuenta,
-            TipoCuenta tipoCuenta,
-            float saldoInicial,
-            bool estado = true)
-        {
-            Cuentas ??= new List<Cuenta>();
-            Cuentas.Add(new Cuenta(id, numeroCuenta, tipoCuenta, saldoInicial, estado));
         }
 
         internal Cliente CambiarContrasenia(string contrasenia)

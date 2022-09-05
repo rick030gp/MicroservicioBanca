@@ -11,8 +11,5 @@ namespace MicroservicioBanca.Application.Contracts.Cuentas
         Task<Response<CuentaDto>> InsertAsync(AddCuentaDto input);
         Task<Response<CuentaDto>> UpdateAsync(UpdateCuentaDto input);
         Task<Response<string>> DeleteAsync(string numeroCuenta);
-        Task<Response<CuentaDto>> AddMovementAsync(AddMovementDto input);
-        Task<Response<CuentaDto>> UpdateMovementAsync(UpdateMovementDto input);
-        Task<Response<CuentaDto>> DeleteMovementAsync(DeleteMovementDto input);
     }
 }

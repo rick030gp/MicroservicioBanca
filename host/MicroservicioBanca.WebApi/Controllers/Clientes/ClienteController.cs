@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace MicroservicioBanca.WebApi.Controllers.Clientes
 {
     [ApiController]
-    [Route("clientes")]
+    [Route("api/clientes")]
     public class ClienteController : ControllerBase, IClienteAppService
     {
         private readonly IClienteAppService _clienteAppService;

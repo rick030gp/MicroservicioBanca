@@ -2,7 +2,6 @@
 using MicroservicioBanca.Domain.Shared;
 using MicroservicioBanca.Domain.Shared.Cuentas;
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace MicroservicioBanca.Domain.Cuentas
@@ -43,6 +42,8 @@ namespace MicroservicioBanca.Domain.Cuentas
                 saldoInicial,
                 estado);
 
+            await _cuentaRepository.InsertAsync(cuenta);
+
             return cuenta;
         }
 
@@ -58,76 +59,17 @@ namespace MicroservicioBanca.Domain.Cuentas
             cuenta.TipoCuenta = tipoCuenta;
             cuenta.Estado = estado;
 
+            await _cuentaRepository.UpdateAsync(cuenta);
             return cuenta;
         }
 
-        public async Task<Cuenta> DeleteAsync(string numeroCuenta)
+        public async Task DeleteAsync(string numeroCuenta)
         {
             var cuenta = await _cuentaRepository.GetByAccountNumberAsync(numeroCuenta);
             if (cuenta == null)
                 throw new MicroservicioBancaException(MicroservicioBancaErrors.AccountDoesNotExistError);
 
-            return cuenta;
-        }
-
-        public async Task<Cuenta> AddMovementAsync(
-            string numeroCuenta,
-            float valor
-            )
-        {
-            var cuenta = await _cuentaRepository.GetWithMovementsByAccountNumberAsync(numeroCuenta);
-            if (cuenta == null)
-                throw new MicroservicioBancaException(MicroservicioBancaErrors.AccountDoesNotExistError);
-
-            if (!cuenta.Estado)
-                throw new MicroservicioBancaException(MicroservicioBancaErrors.InactiveAccountError);
-
-            cuenta.AgregarMovimiento(Guid.NewGuid(), valor);
-
-            return cuenta;
-        }
-
-        public async Task<Cuenta> UpdateMovementAsync(
-            Guid id,
-            string numeroCuenta,
-            float valor
-            )
-        {
-            var cuenta = await _cuentaRepository.GetWithMovementsByAccountNumberAsync(numeroCuenta);
-            if (cuenta == null)
-                throw new MicroservicioBancaException(MicroservicioBancaErrors.AccountDoesNotExistError);
-
-            if (!cuenta.Estado)
-                throw new MicroservicioBancaException(MicroservicioBancaErrors.InactiveAccountError);
-
-            var movimiento = cuenta.Movimientos.FirstOrDefault(m => m.Id == id);
-            if (movimiento == null)
-                throw new MicroservicioBancaException(MicroservicioBancaErrors.MovementDoesNotExistError);
-
-            cuenta.AgregarMovimiento(Guid.NewGuid(), movimiento.Valor + valor);
-
-            return cuenta;
-        }
-
-        public async Task<Cuenta> DeleteMovementAsync(
-            Guid id,
-            string numeroCuenta
-            )
-        {
-            var cuenta = await _cuentaRepository.GetWithMovementsByAccountNumberAsync(numeroCuenta);
-            if (cuenta == null)
-                throw new MicroservicioBancaException(MicroservicioBancaErrors.AccountDoesNotExistError);
-
-            if (!cuenta.Estado)
-                throw new MicroservicioBancaException(MicroservicioBancaErrors.InactiveAccountError);
-
-            var movimiento = cuenta.Movimientos.FirstOrDefault(m => m.Id == id);
-            if (movimiento == null)
-                throw new MicroservicioBancaException(MicroservicioBancaErrors.MovementDoesNotExistError);
-
-            cuenta.AgregarMovimiento(Guid.NewGuid(), movimiento.Valor * -1);
-
-            return cuenta;
+            await _cuentaRepository.RemoveAsync(cuenta);
         }
     }
 }

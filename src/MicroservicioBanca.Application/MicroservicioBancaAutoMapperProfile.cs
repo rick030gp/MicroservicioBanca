@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using MicroservicioBanca.Application.Contracts.Clientes;
 using MicroservicioBanca.Application.Contracts.Cuentas;
+using MicroservicioBanca.Application.Contracts.Movimientos;
 using MicroservicioBanca.Domain.Clientes;
 using MicroservicioBanca.Domain.Cuentas;
+using MicroservicioBanca.Domain.Movimientos;
 
 namespace MicroservicioBanca.Application
 {
@@ -12,6 +14,7 @@ namespace MicroservicioBanca.Application
         {
             CreateMap<Cliente, ClienteDto>();
             CreateMap<Cuenta, CuentaDto>();
+            CreateMap<Movimiento, MovimientoDto>();
         }
     }
 }

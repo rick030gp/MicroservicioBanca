@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace MicroservicioBanca.WebApi.Controllers.Cuentas
 {
     [ApiController]
-    [Route("cuentas")]
+    [Route("api/cuentas")]
     public class CuentaController : ControllerBase, ICuentaAppService
     {
         private readonly ICuentaAppService _cuentaAppService;
@@ -17,25 +17,11 @@ namespace MicroservicioBanca.WebApi.Controllers.Cuentas
             _cuentaAppService = cuentaAppService;
         }
 
-        [HttpPost]
-        [Route("movimiento/agregar")]
-        public async Task<Response<CuentaDto>> AddMovementAsync(AddMovementDto input)
-        {
-            return await _cuentaAppService.AddMovementAsync(input);
-        }
-
         [HttpDelete]
         [Route("eliminar")]
         public async Task<Response<string>> DeleteAsync(string numeroCuenta)
         {
             return await _cuentaAppService.DeleteAsync(numeroCuenta);
-        }
-
-        [HttpDelete]
-        [Route("movimiento/eliminar")]
-        public async Task<Response<CuentaDto>> DeleteMovementAsync(DeleteMovementDto input)
-        {
-            return await _cuentaAppService.DeleteMovementAsync(input);
         }
 
         [HttpGet]
@@ -63,13 +49,6 @@ namespace MicroservicioBanca.WebApi.Controllers.Cuentas
         public async Task<Response<CuentaDto>> UpdateAsync(UpdateCuentaDto input)
         {
             return await _cuentaAppService.UpdateAsync(input);
-        }
-
-        [HttpPatch]
-        [Route("movimiento/editar")]
-        public async Task<Response<CuentaDto>> UpdateMovementAsync(UpdateMovementDto input)
-        {
-            return await _cuentaAppService.UpdateMovementAsync(input);
         }
     }
 }

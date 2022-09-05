@@ -31,8 +31,7 @@ namespace MicroservicioBanca.Application.Clientes
             ResponseManager<string> response = new();
             try
             {
-                var cliente = await _clienteManager.DeleteAsync(identification);
-                await _clienteRepository.RemoveAsync(cliente);
+                await _clienteManager.DeleteAsync(identification);
                 return response.OnSuccess("Eliminado exitosamente");
             }
             catch (MicroservicioBancaException ex)
@@ -99,7 +98,6 @@ namespace MicroservicioBanca.Application.Clientes
                     input.Telefono,
                     input.Contrasenia);
 
-                await _clienteRepository.InsertAsync(client);
                 return response.OnSuccess(_mapper.Map<ClienteDto>(client));
             }
             catch (MicroservicioBancaException ex)
@@ -127,7 +125,6 @@ namespace MicroservicioBanca.Application.Clientes
                     input.Contrasenia,
                     input.Estado);
 
-                await _clienteRepository.UpdateAsync(cliente);
                 return response.OnSuccess(_mapper.Map<ClienteDto>(cliente));
             }
             catch (MicroservicioBancaException ex)

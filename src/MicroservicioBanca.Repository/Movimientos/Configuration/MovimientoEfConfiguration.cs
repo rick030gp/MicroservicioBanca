@@ -1,5 +1,5 @@
 ﻿using MicroservicioBanca.Domain;
-using MicroservicioBanca.Domain.Cuentas;
+using MicroservicioBanca.Domain.Movimientos;
 using MicroservicioBanca.Domain.Shared;
 using MicroservicioBanca.Domain.Shared.Cuentas;
 using Microsoft.EntityFrameworkCore;

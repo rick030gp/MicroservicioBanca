@@ -2,7 +2,7 @@
 {
     public enum TipoCuenta
     {
-        Ahorros = 'A',
-        Corriente = 'C'
+        Ahorros,
+        Corriente
     }
 }

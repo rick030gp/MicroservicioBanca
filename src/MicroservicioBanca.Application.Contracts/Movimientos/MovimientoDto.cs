@@ -1,7 +1,7 @@
 ﻿using MicroservicioBanca.Domain.Shared.Cuentas;
 using System;
 
-namespace MicroservicioBanca.Application.Contracts.Cuentas
+namespace MicroservicioBanca.Application.Contracts.Movimientos
 {
     public class MovimientoDto
     {

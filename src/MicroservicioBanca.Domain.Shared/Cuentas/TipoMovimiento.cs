@@ -2,7 +2,7 @@
 {
     public enum TipoMovimiento
     {
-        Debito = 'D',
-        Credito = 'C'
+        Debito,
+        Credito
     }
 }

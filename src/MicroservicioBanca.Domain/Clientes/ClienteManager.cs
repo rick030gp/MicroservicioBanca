@@ -1,5 +1,4 @@
-﻿using MicroservicioBanca.Domain.Cuentas;
-using MicroservicioBanca.Domain.Shared;
+﻿using MicroservicioBanca.Domain.Shared;
 using MicroservicioBanca.Domain.Shared.Clientes;
 using System;
 using System.Threading.Tasks;
@@ -9,14 +8,11 @@ namespace MicroservicioBanca.Domain.Clientes
     public class ClienteManager
     {
         private readonly IClienteRepository _clienteRepository;
-        private readonly ICuentaRepository _cuentaRepository;
 
         public ClienteManager(
-            IClienteRepository clienteRepository,
-            ICuentaRepository cuentaRepository)
+            IClienteRepository clienteRepository)
         {
             _clienteRepository = clienteRepository;
-            _cuentaRepository = cuentaRepository;
         }
 
         public async Task<Cliente> CreateAsync(
@@ -44,6 +40,7 @@ namespace MicroservicioBanca.Domain.Clientes
                 contrasenia,
                 estado);
 
+            await _clienteRepository.InsertAsync(cliente);
             return cliente;
         }
 
@@ -68,17 +65,18 @@ namespace MicroservicioBanca.Domain.Clientes
             cliente.Telefono = telefono;
             cliente.CambiarContrasenia(contrasenia);
             cliente.Estado = estado;
-            
+
+            await _clienteRepository.UpdateAsync(cliente);
             return cliente;
         }
 
-        public async Task<Cliente> DeleteAsync(string identificacion)
+        public async Task DeleteAsync(string identificacion)
         {
             var cliente = await _clienteRepository.GetByIdentificationAsync(identificacion);
             if (cliente == null)
                 throw new MicroservicioBancaException(MicroservicioBancaErrors.ClientNotFoundError);
 
-            return cliente;
+            await _clienteRepository.RemoveAsync(cliente);
         }
     }
 }
