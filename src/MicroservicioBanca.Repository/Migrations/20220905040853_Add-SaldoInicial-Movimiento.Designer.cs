@@ -4,14 +4,16 @@ using MicroservicioBanca.Repository.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MicroservicioBanca.Repository.Migrations
 {
     [DbContext(typeof(MicroservicioBancaDbContext))]
-    partial class MicroservicioBancaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220905040853_Add-SaldoInicial-Movimiento")]
+    partial class AddSaldoInicialMovimiento
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

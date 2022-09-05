@@ -18,6 +18,23 @@ namespace MicroservicioBanca.Domain.Cuentas
 
         internal Cuenta(
             Guid id,
+            Guid clienteId,
+            string numeroCuenta,
+            TipoCuenta tipoCuenta,
+            float saldoInicial,
+            bool estado = true)
+        {
+            Id = id;
+            ClientId = clienteId;
+            NumeroCuenta = numeroCuenta;
+            TipoCuenta = tipoCuenta;
+            SaldoInicial = saldoInicial;
+            Saldo = saldoInicial;
+            Estado = estado;
+        }
+
+        internal Cuenta(
+            Guid id,
             string numeroCuenta,
             TipoCuenta tipoCuenta,
             float saldoInicial,
@@ -31,31 +48,27 @@ namespace MicroservicioBanca.Domain.Cuentas
             Estado = estado;
         }
 
+        private void SetSaldo(float saldo)
+        {
+            Saldo = saldo;
+        }
+
         internal void AgregarMovimiento(
             Guid id,
-            Guid cuentaId,
-            TipoMovimiento tipo,
             float valor)
         {
             Movimientos ??= new List<Movimiento>();
-            if (!Estado)
-                throw new Exception(MicroservicioBancaErrors.InactiveAccountError);
-            if (tipo == TipoMovimiento.Debito && Saldo < valor)
-                throw new Exception(MicroservicioBancaErrors.InsufficientBalanceError);
+            if (valor == 0)
+                throw new MicroservicioBancaException(MicroservicioBancaErrors.MovementZeroError);
 
-            switch(tipo)
-            {
-                case TipoMovimiento.Debito:
-                    Saldo -= valor;
-                    break;
-                case TipoMovimiento.Credito:
-                    Saldo += valor;
-                    break;
-                default:
-                    throw new Exception(MicroservicioBancaErrors.MovementTypeDoesNotExistError);
-            }
+            TipoMovimiento tipoMovimiento = valor < 0 ?
+                TipoMovimiento.Debito : TipoMovimiento.Credito;
+            
+            if (tipoMovimiento == TipoMovimiento.Debito && Saldo < Math.Abs(valor))
+                throw new MicroservicioBancaException(MicroservicioBancaErrors.InsufficientBalanceError);
 
-            Movimientos.Add(new Movimiento(id, cuentaId, tipo, valor, Saldo));
+            Movimientos.Add(new Movimiento(id, this.Id, tipoMovimiento, Saldo, valor));
+            SetSaldo(Saldo + valor);
         }
     }
 }

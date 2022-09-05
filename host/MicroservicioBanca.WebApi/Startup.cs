@@ -1,10 +1,6 @@
 using AutoMapper;
 using MicroservicioBanca.Application;
-using MicroservicioBanca.Application.Clientes;
-using MicroservicioBanca.Application.Contracts.Clientes;
 using MicroservicioBanca.Dependencies;
-using MicroservicioBanca.Domain.Clientes;
-using MicroservicioBanca.Repository.Clientes;
 using MicroservicioBanca.Repository.EntityFrameworkCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

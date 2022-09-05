@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MicroservicioBanca.Repository.Migrations
 {
     [DbContext(typeof(MicroservicioBancaDbContext))]
-    [Migration("20220904163739_Initial")]
+    [Migration("20220905000011_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

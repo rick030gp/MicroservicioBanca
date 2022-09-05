@@ -9,7 +9,7 @@ namespace MicroservicioBanca.Domain.Clientes
     public class Cliente : Persona
     {
         public Guid Id { get; set; }
-        public string Contrasenia { get; set; }
+        public string Contrasenia { get; private set; }
         public bool Estado { get; set; } = true;
         public List<Cuenta> Cuentas { get; set; }
 
@@ -22,7 +22,13 @@ namespace MicroservicioBanca.Domain.Clientes
             string direccion,
             string telefono,
             string contrasenia,
-            bool estado) : base(nombre, genero, edad, identificacion, direccion, telefono)
+            bool estado) : base(
+                nombre,
+                genero,
+                edad,
+                identificacion,
+                direccion,
+                telefono)
         {
             Id = id;
             Contrasenia = contrasenia;
@@ -39,6 +45,17 @@ namespace MicroservicioBanca.Domain.Clientes
         {
             Cuentas ??= new List<Cuenta>();
             Cuentas.Add(new Cuenta(id, numeroCuenta, tipoCuenta, saldoInicial, estado));
+        }
+
+        internal Cliente CambiarContrasenia(string contrasenia)
+        {
+            SetContrasenia(contrasenia);
+            return this;
+        }
+
+        private void SetContrasenia(string contrasenia)
+        {
+            Contrasenia = contrasenia;
         }
     }
 }

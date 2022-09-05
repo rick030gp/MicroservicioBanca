@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -19,5 +20,6 @@ namespace MicroservicioBanca.Repository.EntityFrameworkCore
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
         void RemoveRange(IEnumerable<object> entities);
         EntityEntry Update(object entity);
+        EntityEntry<TEntity> Entry<TEntity>([NotNullAttribute] TEntity entity) where TEntity : class;
     }
 }

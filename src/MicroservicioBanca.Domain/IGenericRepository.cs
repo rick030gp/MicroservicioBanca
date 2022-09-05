@@ -9,6 +9,7 @@ namespace MicroservicioBanca.Domain
         Task<TEntity> GetById(TKey id);
         Task<TEntity> InsertAsync(TEntity entity);
         Task<TEntity> UpdateAsync(TEntity entity);
+        Task<TEntity> UpdateAggregateAsync(TEntity entity);
         Task RemoveAsync(TEntity entity);
     }
 }
