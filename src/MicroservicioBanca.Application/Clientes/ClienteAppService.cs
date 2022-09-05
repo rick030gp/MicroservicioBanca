@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MicroservicioBanca.Application.Contracts.Clientes;
+using MicroservicioBanca.Application.Contracts.Cuentas;
 using MicroservicioBanca.Domain.Clientes;
 using MicroservicioBanca.Domain.Shared;
 using MicroservicioBanca.Domain.Shared.Response;
@@ -60,7 +61,17 @@ namespace MicroservicioBanca.Application.Clientes
                 if (cliente == null)
                     return response.OnError(MicroservicioBancaErrors.ClientNotFoundError);
 
-                return response.OnSuccess(_mapper.Map<ClienteCompletoDto>(cliente));
+                var clienteMapper = _mapper.Map<ClienteDto>(cliente);
+                var cuentas = _mapper.Map<List<ReporteCuentaDto>>(cliente.Cuentas);
+                ClienteCompletoDto clienteCompletoDto = new()
+                {
+                    FechaInicial = fechaInicial.ToString("yyyy-MM-dd"),
+                    FechaFinal = fechaFinal?.ToString("yyyy-MM-dd"),
+                    Cliente = cliente.Nombre,
+                    Cuentas = cuentas
+                };
+                
+                return response.OnSuccess(clienteCompletoDto);
             }
             catch (MicroservicioBancaException ex)
             {

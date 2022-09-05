@@ -27,7 +27,8 @@ namespace MicroservicioBanca.Repository.Clientes
             return await _context.Clientes
                 .Include(c => c.Cuentas)
                 .ThenInclude(c => c.Movimientos.Where(
-                    m => m.Fecha >= fechaInicial && m.Fecha <= fechaFin))
+                    m => m.Fecha >= fechaInicial.Date && m.Fecha <= fechaFin.Date.AddSeconds(86399))
+                    .OrderByDescending(m => m.Fecha))
                 .AsSplitQuery()
                 .OrderBy(c => c.Identificacion)
                 .FirstOrDefaultAsync(c => c.Identificacion == identification);

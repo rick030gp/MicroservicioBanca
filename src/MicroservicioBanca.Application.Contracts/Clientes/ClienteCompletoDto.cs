@@ -3,8 +3,11 @@ using System.Collections.Generic;
 
 namespace MicroservicioBanca.Application.Contracts.Clientes
 {
-    public class ClienteCompletoDto : ClienteDto
+    public class ClienteCompletoDto
     {
-        public List<CuentaDto> Cuentas { get; set; }
+        public string FechaInicial { get; set; }
+        public string FechaFinal { get; set; }
+        public string Cliente { get; set; }
+        public List<ReporteCuentaDto> Cuentas { get; set; }
     }
 }
