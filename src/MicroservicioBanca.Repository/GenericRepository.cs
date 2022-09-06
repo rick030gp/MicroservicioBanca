@@ -43,14 +43,6 @@ namespace MicroservicioBanca.Repository
             _context.Set<TEntity>().Update(entity).State = EntityState.Modified;
             await _context.SaveChangesAsync();
             return entity;
-        }
-
-        public async  Task<TEntity> UpdateAggregateAsync(TEntity entity)
-        {
-            var attached = _context.Set<TEntity>().Attach(entity);
-            _context.Entry(attached).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
-            return attached.Entity;
-        }
+        }   
     }
 }

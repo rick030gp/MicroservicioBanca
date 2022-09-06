@@ -11,6 +11,10 @@ namespace MicroservicioBanca.Domain.Clientes
         public string Direccion { get; set; }
         public string Telefono { get; set; }
 
+        public Persona()
+        {
+        }
+
         internal Persona(
             string nombre,
             Genero genero,

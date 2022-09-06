@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre\": \"MARTA SUAREZ\",\r\n    \"genero\": 1,\r\n    \"edad\": 29,\r\n    \"identificacion\": \"0401119200\",\r\n    \"direccion\": \"Ibarra\",\r\n    \"telefono\": \"0987737773\",\r\n    \"estado\": true,\r\n    \"contrasenia\": \"12345678\"\r\n}",
+							"raw": "{\r\n    \"nombre\": \"Jose Lema\",\r\n    \"genero\": 1,\r\n    \"edad\": 39,\r\n    \"identificacion\": \"1002118633\",\r\n    \"direccion\": \"Otavalo sn y principal\",\r\n    \"telefono\": \"098254785\",\r\n    \"estado\": true,\r\n    \"contrasenia\": \"1234\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -24,13 +24,13 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:5001/clientes/nuevo",
-							"protocol": "https",
+							"raw": "http://localhost/api/clientes/nuevo",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "5001",
 							"path": [
+								"api",
 								"clientes",
 								"nuevo"
 							]
@@ -44,13 +44,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:5001/clientes/todos",
-							"protocol": "https",
+							"raw": "http://localhost/api/clientes/todos",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "5001",
 							"path": [
+								"api",
 								"clientes",
 								"todos"
 							]
@@ -64,19 +64,19 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:5001/clientes?identification=0401734041",
-							"protocol": "https",
+							"raw": "http://localhost/api/clientes?identification=1002118633",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "5001",
 							"path": [
+								"api",
 								"clientes"
 							],
 							"query": [
 								{
 									"key": "identification",
-									"value": "0401734041"
+									"value": "1002118633"
 								}
 							]
 						}
@@ -90,7 +90,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"identificacion\": \"0401734041\",\r\n    \"nombre\": \"RICHARD TARUPI\",\r\n    \"genero\": 0,\r\n    \"edad\": 29,\r\n    \"direccion\": \"El Angel\",\r\n    \"telefono\": \"0984905901\",\r\n    \"estado\": true,\r\n    \"contrasenia\": \"12345678\"\r\n}",
+							"raw": "{\r\n    \"identificacion\": \"1002118633\",\r\n    \"edad\": 40\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -98,13 +98,13 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:5001/clientes/editar",
-							"protocol": "https",
+							"raw": "http://localhost/api/clientes/editar",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "5001",
 							"path": [
+								"api",
 								"clientes",
 								"editar"
 							]
@@ -118,20 +118,54 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:5001/clientes/eliminar?identification=0417777777",
-							"protocol": "https",
+							"raw": "http://localhost/api/clientes/eliminar?identification=0401119201",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "5001",
 							"path": [
+								"api",
 								"clientes",
 								"eliminar"
 							],
 							"query": [
 								{
 									"key": "identification",
-									"value": "0417777777"
+									"value": "0401119201"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ReporteCuentas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/api/clientes/reportes?identificacionCliente=1002118633&fechaInicial=2022-09-05&fechaFinal=",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"clientes",
+								"reportes"
+							],
+							"query": [
+								{
+									"key": "identificacionCliente",
+									"value": "1002118633"
+								},
+								{
+									"key": "fechaInicial",
+									"value": "2022-09-05"
+								},
+								{
+									"key": "fechaFinal",
+									"value": ""
 								}
 							]
 						}
@@ -150,7 +184,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"identificacionCliente\": \"0401734041\",\r\n    \"numeroCuenta\": \"0000003\",\r\n    \"tipoCuenta\": 0,\r\n    \"saldoInicial\": 500,\r\n    \"estado\": true\r\n}",
+							"raw": "{\r\n    \"identificacionCliente\": \"1002118633\",\r\n    \"numeroCuenta\": \"585545\",\r\n    \"tipoCuenta\": 1,\r\n    \"saldoInicial\": 1000,\r\n    \"estado\": true\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -158,13 +192,13 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:5001/cuentas/nueva",
-							"protocol": "https",
+							"raw": "http://localhost/api/cuentas/nueva",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "5001",
 							"path": [
+								"api",
 								"cuentas",
 								"nueva"
 							]
@@ -178,13 +212,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:5001/cuentas/todas",
-							"protocol": "https",
+							"raw": "http://localhost/api/cuentas/todas",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "5001",
 							"path": [
+								"api",
 								"cuentas",
 								"todas"
 							]
@@ -198,19 +232,19 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:5001/cuentas?numeroCuenta=0000001",
-							"protocol": "https",
+							"raw": "http://localhost/api/cuentas?numeroCuenta=585545",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "5001",
 							"path": [
+								"api",
 								"cuentas"
 							],
 							"query": [
 								{
 									"key": "numeroCuenta",
-									"value": "0000001"
+									"value": "585545"
 								}
 							]
 						}
@@ -224,7 +258,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"numeroCuenta\": \"0000001\",\r\n    \"tipoCuenta\": 1,\r\n    \"estado\": true\r\n}",
+							"raw": "{\r\n    \"numeroCuenta\": \"478758\",\r\n    \"tipoCuenta\": 0,\r\n    \"estado\": true\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -232,13 +266,13 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:5001/cuentas/editar",
-							"protocol": "https",
+							"raw": "http://localhost/api/cuentas/editar",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "5001",
 							"path": [
+								"api",
 								"cuentas",
 								"editar"
 							]
@@ -252,20 +286,20 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:5001/cuentas/eliminar?numeroCuenta=0000003",
-							"protocol": "https",
+							"raw": "http://localhost/api/cuentas/eliminar?numeroCuenta=0002",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "5001",
 							"path": [
+								"api",
 								"cuentas",
 								"eliminar"
 							],
 							"query": [
 								{
 									"key": "numeroCuenta",
-									"value": "0000003"
+									"value": "0002"
 								}
 							]
 						}
@@ -284,7 +318,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"numeroCuenta\": \"0000001\",\r\n    \"valor\": 40\r\n}",
+							"raw": "{\r\n    \"numeroCuenta\": \"478758\",\r\n    \"valor\": 575\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -292,16 +326,15 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:5001/cuentas/movimiento/agregar",
-							"protocol": "https",
+							"raw": "http://localhost/api/movimientos/nuevo",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "5001",
 							"path": [
-								"cuentas",
-								"movimiento",
-								"agregar"
+								"api",
+								"movimientos",
+								"nuevo"
 							]
 						}
 					},
@@ -314,7 +347,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n  \"numeroCuenta\": \"0000001\",\r\n  \"valor\": 100\r\n}",
+							"raw": "{\r\n  \"id\": \"BED43909-618C-4B38-AB69-050898DEBC32\",\r\n  \"numeroCuenta\": \"478758\",\r\n  \"valor\": -20\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -322,15 +355,14 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:5001/cuentas/movimiento/editar",
-							"protocol": "https",
+							"raw": "http://localhost/api/movimientos/editar",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "5001",
 							"path": [
-								"cuentas",
-								"movimiento",
+								"api",
+								"movimientos",
 								"editar"
 							]
 						}
@@ -344,7 +376,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n  \"numeroCuenta\": \"0000001\"\r\n}",
+							"raw": "{\r\n  \"id\": \"01C8D312-5795-471A-A6C3-BDE82A0D4ED0\",\r\n  \"numeroCuenta\": \"478758\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -352,16 +384,40 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:5001/cuentas/movimiento/eliminar",
-							"protocol": "https",
+							"raw": "http://localhost/api/movimientos/eliminar",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "5001",
 							"path": [
-								"cuentas",
-								"movimiento",
+								"api",
+								"movimientos",
 								"eliminar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ObtenerPorCuenta",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/api/movimientos?numeroCuenta=478758",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"movimientos"
+							],
+							"query": [
+								{
+									"key": "numeroCuenta",
+									"value": "478758"
+								}
 							]
 						}
 					},

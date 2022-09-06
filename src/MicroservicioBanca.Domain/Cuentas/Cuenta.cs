@@ -1,4 +1,4 @@
-﻿using MicroservicioBanca.Domain.Shared;
+﻿using MicroservicioBanca.Domain.Movimientos;
 using MicroservicioBanca.Domain.Shared.Cuentas;
 using System;
 using System.Collections.Generic;
@@ -16,6 +16,10 @@ namespace MicroservicioBanca.Domain.Cuentas
         public bool Estado { get; set; } = true;
         public virtual List<Movimiento> Movimientos { get; set; }
 
+        private Cuenta()
+        {
+        }
+
         internal Cuenta(
             Guid id,
             Guid clienteId,
@@ -31,44 +35,14 @@ namespace MicroservicioBanca.Domain.Cuentas
             SaldoInicial = saldoInicial;
             Saldo = saldoInicial;
             Estado = estado;
+
+            Movimientos = new List<Movimiento>();
         }
 
-        internal Cuenta(
-            Guid id,
-            string numeroCuenta,
-            TipoCuenta tipoCuenta,
-            float saldoInicial,
-            bool estado = true)
-        {
-            Id = id;
-            NumeroCuenta = numeroCuenta;
-            TipoCuenta = tipoCuenta;
-            SaldoInicial = saldoInicial;
-            Saldo = saldoInicial;
-            Estado = estado;
-        }
-
-        private void SetSaldo(float saldo)
+        internal Cuenta UpdateSaldo(float saldo)
         {
             Saldo = saldo;
-        }
-
-        internal void AgregarMovimiento(
-            Guid id,
-            float valor)
-        {
-            Movimientos ??= new List<Movimiento>();
-            if (valor == 0)
-                throw new MicroservicioBancaException(MicroservicioBancaErrors.MovementZeroError);
-
-            TipoMovimiento tipoMovimiento = valor < 0 ?
-                TipoMovimiento.Debito : TipoMovimiento.Credito;
-            
-            if (tipoMovimiento == TipoMovimiento.Debito && Saldo < Math.Abs(valor))
-                throw new MicroservicioBancaException(MicroservicioBancaErrors.InsufficientBalanceError);
-
-            Movimientos.Add(new Movimiento(id, this.Id, tipoMovimiento, Saldo, valor));
-            SetSaldo(Saldo + valor);
+            return this;
         }
     }
 }

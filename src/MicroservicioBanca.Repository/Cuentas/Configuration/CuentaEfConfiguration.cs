@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 
-namespace MicroservicioBanca.Repository.Cuentas.Configuration
+namespace MicroservicioBanca.Repository.Movimientos.Configuration
 {
     public class CuentaEfConfiguration : IEntityTypeConfiguration<Cuenta>
     {

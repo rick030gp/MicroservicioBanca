@@ -1,13 +1,14 @@
 ﻿using MicroservicioBanca.Application.Contracts.Clientes;
 using MicroservicioBanca.Domain.Shared.Response.Models;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace MicroservicioBanca.WebApi.Controllers.Clientes
 {
     [ApiController]
-    [Route("clientes")]
+    [Route("api/clientes")]
     public class ClienteController : ControllerBase, IClienteAppService
     {
         private readonly IClienteAppService _clienteAppService;
@@ -22,6 +23,16 @@ namespace MicroservicioBanca.WebApi.Controllers.Clientes
         public async Task<Response<string>> DeleteAsync(string identification)
         {
             return await _clienteAppService.DeleteAsync(identification);
+        }
+
+        [HttpGet]
+        [Route("reportes")]
+        public async Task<Response<ClienteCompletoDto>> GetAccountsStatementAsync(string identificacionCliente, DateTime fechaInicial, DateTime? fechaFinal = null)
+        {
+            return await _clienteAppService.GetAccountsStatementAsync(
+                identificacionCliente,
+                fechaInicial,
+                fechaFinal); 
         }
 
         [HttpGet]

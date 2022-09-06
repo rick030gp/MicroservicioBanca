@@ -1,5 +1,4 @@
-﻿using MicroservicioBanca.Domain.Cuentas;
-using MicroservicioBanca.Domain.Shared;
+﻿using MicroservicioBanca.Domain.Shared;
 using MicroservicioBanca.Domain.Shared.Clientes;
 using System;
 using System.Threading.Tasks;
@@ -9,14 +8,11 @@ namespace MicroservicioBanca.Domain.Clientes
     public class ClienteManager
     {
         private readonly IClienteRepository _clienteRepository;
-        private readonly ICuentaRepository _cuentaRepository;
 
         public ClienteManager(
-            IClienteRepository clienteRepository,
-            ICuentaRepository cuentaRepository)
+            IClienteRepository clienteRepository)
         {
             _clienteRepository = clienteRepository;
-            _cuentaRepository = cuentaRepository;
         }
 
         public async Task<Cliente> CreateAsync(
@@ -44,41 +40,44 @@ namespace MicroservicioBanca.Domain.Clientes
                 contrasenia,
                 estado);
 
+            await _clienteRepository.InsertAsync(cliente);
             return cliente;
         }
 
         public async Task<Cliente> UpdateAsync(
             string identificacion,
             string nombre,
-            Genero genero,
-            short edad,
+            Genero? genero,
+            short? edad,
             string direccion,
             string telefono,
             string contrasenia,
-            bool estado)
+            bool? estado)
         {
             var cliente = await _clienteRepository.GetByIdentificationAsync(identificacion);
             if (cliente == null)
                 throw new MicroservicioBancaException(MicroservicioBancaErrors.ClientNotFoundError);
 
-            cliente.Nombre = nombre;
-            cliente.Genero = genero;
-            cliente.Edad = edad;
-            cliente.Direccion = direccion;
-            cliente.Telefono = telefono;
-            cliente.CambiarContrasenia(contrasenia);
-            cliente.Estado = estado;
-            
+
+            cliente.Nombre = nombre ?? cliente.Nombre;
+            cliente.Genero = genero ?? cliente.Genero;
+            cliente.Edad = edad ?? cliente.Edad;
+            cliente.Direccion = direccion ?? cliente.Direccion;
+            cliente.Telefono = telefono ?? cliente.Telefono;
+            cliente.CambiarContrasenia(contrasenia ?? cliente.Contrasenia);
+            cliente.Estado = estado ?? cliente.Estado;
+
+            await _clienteRepository.UpdateAsync(cliente);
             return cliente;
         }
 
-        public async Task<Cliente> DeleteAsync(string identificacion)
+        public async Task DeleteAsync(string identificacion)
         {
             var cliente = await _clienteRepository.GetByIdentificationAsync(identificacion);
             if (cliente == null)
                 throw new MicroservicioBancaException(MicroservicioBancaErrors.ClientNotFoundError);
 
-            return cliente;
+            await _clienteRepository.RemoveAsync(cliente);
         }
     }
 }

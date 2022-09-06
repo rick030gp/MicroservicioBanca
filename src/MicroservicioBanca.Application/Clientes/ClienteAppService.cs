@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MicroservicioBanca.Application.Contracts.Clientes;
+using MicroservicioBanca.Application.Contracts.Cuentas;
 using MicroservicioBanca.Domain.Clientes;
 using MicroservicioBanca.Domain.Shared;
 using MicroservicioBanca.Domain.Shared.Response;
@@ -31,8 +32,7 @@ namespace MicroservicioBanca.Application.Clientes
             ResponseManager<string> response = new();
             try
             {
-                var cliente = await _clienteManager.DeleteAsync(identification);
-                await _clienteRepository.RemoveAsync(cliente);
+                await _clienteManager.DeleteAsync(identification);
                 return response.OnSuccess("Eliminado exitosamente");
             }
             catch (MicroservicioBancaException ex)
@@ -43,7 +43,44 @@ namespace MicroservicioBanca.Application.Clientes
             {
                 return response.OnError(MicroservicioBancaErrors.GeneralError);
             }
+        }
 
+        public async Task<Response<ClienteCompletoDto>> GetAccountsStatementAsync(string identificacionCliente, DateTime fechaInicial, DateTime? fechaFinal = null)
+        {
+            ResponseManager<ClienteCompletoDto> response = new();
+            try
+            {
+                if (fechaInicial > fechaFinal)
+                    return response.OnError(MicroservicioBancaErrors.ReportDatesError);
+
+                var cliente = await _clienteRepository.GetWithAccountsByIdentificationAndDatesAsync(
+                    identificacionCliente,
+                    fechaInicial,
+                    fechaFinal);
+
+                if (cliente == null)
+                    return response.OnError(MicroservicioBancaErrors.ClientNotFoundError);
+
+                var clienteMapper = _mapper.Map<ClienteDto>(cliente);
+                var cuentas = _mapper.Map<List<ReporteCuentaDto>>(cliente.Cuentas);
+                ClienteCompletoDto clienteCompletoDto = new()
+                {
+                    FechaInicial = fechaInicial.ToString("yyyy-MM-dd"),
+                    FechaFinal = fechaFinal?.ToString("yyyy-MM-dd"),
+                    Cliente = cliente.Nombre,
+                    Cuentas = cuentas
+                };
+                
+                return response.OnSuccess(clienteCompletoDto);
+            }
+            catch (MicroservicioBancaException ex)
+            {
+                return response.OnError(new Error(ex));
+            }
+            catch (Exception)
+            {
+                return response.OnError(MicroservicioBancaErrors.GeneralError);
+            }
         }
 
         public async Task<Response<List<ClienteDto>>> GetAllAsync()
@@ -99,7 +136,6 @@ namespace MicroservicioBanca.Application.Clientes
                     input.Telefono,
                     input.Contrasenia);
 
-                await _clienteRepository.InsertAsync(client);
                 return response.OnSuccess(_mapper.Map<ClienteDto>(client));
             }
             catch (MicroservicioBancaException ex)
@@ -127,7 +163,6 @@ namespace MicroservicioBanca.Application.Clientes
                     input.Contrasenia,
                     input.Estado);
 
-                await _clienteRepository.UpdateAsync(cliente);
                 return response.OnSuccess(_mapper.Map<ClienteDto>(cliente));
             }
             catch (MicroservicioBancaException ex)

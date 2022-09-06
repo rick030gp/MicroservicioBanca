@@ -11,17 +11,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{EA7EB006-B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroservicioBanca.Application", "src\MicroservicioBanca.Application\MicroservicioBanca.Application.csproj", "{AB45D78E-338E-44F6-AAEF-947F9F909AE9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroservicioBanca.Application.Contracts", "src\MicroservicioBanca.Application.Contracts\MicroservicioBanca.Application.Contracts.csproj", "{5C827181-9627-403C-AD95-2C57402CD017}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroservicioBanca.Application.Contracts", "src\MicroservicioBanca.Application.Contracts\MicroservicioBanca.Application.Contracts.csproj", "{5C827181-9627-403C-AD95-2C57402CD017}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroservicioBanca.Domain", "src\MicroservicioBanca.Domain\MicroservicioBanca.Domain.csproj", "{CE99C97C-C331-4281-868A-44337026F62B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroservicioBanca.Domain", "src\MicroservicioBanca.Domain\MicroservicioBanca.Domain.csproj", "{CE99C97C-C331-4281-868A-44337026F62B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroservicioBanca.Domain.Shared", "src\MicroservicioBanca.Domain.Shared\MicroservicioBanca.Domain.Shared.csproj", "{352CBEDC-0A0E-41C5-910E-AD723B56E37E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroservicioBanca.Domain.Shared", "src\MicroservicioBanca.Domain.Shared\MicroservicioBanca.Domain.Shared.csproj", "{352CBEDC-0A0E-41C5-910E-AD723B56E37E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroservicioBanca.Repository", "src\MicroservicioBanca.Repository\MicroservicioBanca.Repository.csproj", "{1FEEB65F-64C6-4C1B-943C-03AA91891C3E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroservicioBanca.Repository", "src\MicroservicioBanca.Repository\MicroservicioBanca.Repository.csproj", "{1FEEB65F-64C6-4C1B-943C-03AA91891C3E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroservicioBanca.WebApi", "host\MicroservicioBanca.WebApi\MicroservicioBanca.WebApi.csproj", "{00F49EEF-F86A-43A1-A56C-886869427526}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroservicioBanca.WebApi", "host\MicroservicioBanca.WebApi\MicroservicioBanca.WebApi.csproj", "{00F49EEF-F86A-43A1-A56C-886869427526}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroservicioBanca.Dependencies", "src\MicroservicioBanca.Dependencies\MicroservicioBanca.Dependencies.csproj", "{D6CD93D6-8BFF-4F8B-9D04-B8961010E7B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroservicioBanca.Dependencies", "src\MicroservicioBanca.Dependencies\MicroservicioBanca.Dependencies.csproj", "{D6CD93D6-8BFF-4F8B-9D04-B8961010E7B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
