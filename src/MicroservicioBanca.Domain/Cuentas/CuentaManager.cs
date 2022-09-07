@@ -1,10 +1,8 @@
-﻿using MicroservicioBanca.Domain.Clientes;
-using MicroservicioBanca.Domain.Shared;
-using MicroservicioBanca.Domain.Shared.Cuentas;
+﻿using MicroservicioBanca.Clientes;
 using System;
 using System.Threading.Tasks;
 
-namespace MicroservicioBanca.Domain.Cuentas
+namespace MicroservicioBanca.Cuentas
 {
     public class CuentaManager
     {
@@ -42,8 +40,6 @@ namespace MicroservicioBanca.Domain.Cuentas
                 saldoInicial,
                 estado);
 
-            await _cuentaRepository.InsertAsync(cuenta);
-
             return cuenta;
         }
 
@@ -59,17 +55,7 @@ namespace MicroservicioBanca.Domain.Cuentas
             cuenta.TipoCuenta = tipoCuenta ?? cuenta.TipoCuenta;
             cuenta.Estado = estado ?? cuenta.Estado;
 
-            await _cuentaRepository.UpdateAsync(cuenta);
             return cuenta;
-        }
-
-        public async Task DeleteAsync(string numeroCuenta)
-        {
-            var cuenta = await _cuentaRepository.GetByAccountNumberAsync(numeroCuenta);
-            if (cuenta == null)
-                throw new MicroservicioBancaException(MicroservicioBancaErrors.AccountDoesNotExistError);
-
-            await _cuentaRepository.RemoveAsync(cuenta);
         }
     }
 }

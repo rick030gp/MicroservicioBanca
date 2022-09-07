@@ -1,15 +1,12 @@
 ﻿using AutoMapper;
-using MicroservicioBanca.Application.Contracts.Movimientos;
-using MicroservicioBanca.Domain.Cuentas;
-using MicroservicioBanca.Domain.Movimientos;
-using MicroservicioBanca.Domain.Shared;
-using MicroservicioBanca.Domain.Shared.Response;
-using MicroservicioBanca.Domain.Shared.Response.Models;
+using MicroservicioBanca.Cuentas;
+using MicroservicioBanca.Response;
+using MicroservicioBanca.Response.Models;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace MicroservicioBanca.Application.Movimientos
+namespace MicroservicioBanca.Movimientos
 {
     public class MovimientoAppService : IMovimientoAppService
     {

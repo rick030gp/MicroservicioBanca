@@ -1,7 +1,6 @@
-﻿using MicroservicioBanca.Domain.Shared.Cuentas;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace MicroservicioBanca.Application.Contracts.Cuentas
+namespace MicroservicioBanca.Cuentas
 {
     public class UpdateCuentaDto
     {

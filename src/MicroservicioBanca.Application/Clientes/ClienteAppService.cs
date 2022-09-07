@@ -1,15 +1,12 @@
 ﻿using AutoMapper;
-using MicroservicioBanca.Application.Contracts.Clientes;
-using MicroservicioBanca.Application.Contracts.Cuentas;
-using MicroservicioBanca.Domain.Clientes;
-using MicroservicioBanca.Domain.Shared;
-using MicroservicioBanca.Domain.Shared.Response;
-using MicroservicioBanca.Domain.Shared.Response.Models;
+using MicroservicioBanca.Cuentas;
+using MicroservicioBanca.Response;
+using MicroservicioBanca.Response.Models;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace MicroservicioBanca.Application.Clientes
+namespace MicroservicioBanca.Clientes
 {
     public class ClienteAppService : IClienteAppService
     {
@@ -27,12 +24,16 @@ namespace MicroservicioBanca.Application.Clientes
             _mapper = mapper;
         }
 
-        public async Task<Response<string>> DeleteAsync(string identification)
+        public async Task<Response<string>> DeleteAsync(string identificacion)
         {
             ResponseManager<string> response = new();
             try
             {
-                await _clienteManager.DeleteAsync(identification);
+                var cliente = await _clienteRepository.GetByIdentificationAsync(identificacion);
+                if (cliente == null)
+                    return response.OnError(MicroservicioBancaErrors.ClientNotFoundError);
+
+                await _clienteRepository.RemoveAsync(cliente);
                 return response.OnSuccess("Eliminado exitosamente");
             }
             catch (MicroservicioBancaException ex)
@@ -127,7 +128,7 @@ namespace MicroservicioBanca.Application.Clientes
             ResponseManager<ClienteDto> response = new();
             try
             {
-                var client = await _clienteManager.CreateAsync(
+                var cliente = await _clienteManager.CreateAsync(
                     input.Nombre,
                     input.Genero,
                     input.Edad,
@@ -136,7 +137,8 @@ namespace MicroservicioBanca.Application.Clientes
                     input.Telefono,
                     input.Contrasenia);
 
-                return response.OnSuccess(_mapper.Map<ClienteDto>(client));
+                await _clienteRepository.InsertAsync(cliente);
+                return response.OnSuccess(_mapper.Map<ClienteDto>(cliente));
             }
             catch (MicroservicioBancaException ex)
             {
@@ -163,6 +165,7 @@ namespace MicroservicioBanca.Application.Clientes
                     input.Contrasenia,
                     input.Estado);
 
+                await _clienteRepository.UpdateAsync(cliente);
                 return response.OnSuccess(_mapper.Map<ClienteDto>(cliente));
             }
             catch (MicroservicioBancaException ex)

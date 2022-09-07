@@ -1,8 +1,8 @@
-﻿using MicroservicioBanca.Domain.Shared.Response.Models;
+﻿using MicroservicioBanca.Response.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace MicroservicioBanca.Application.Contracts.Cuentas
+namespace MicroservicioBanca.Cuentas
 {
     public interface ICuentaAppService
     {

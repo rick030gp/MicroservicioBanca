@@ -12,8 +12,8 @@ COPY ["src/MicroservicioBanca.Dependencies/MicroservicioBanca.Dependencies.cspro
 COPY ["src/MicroservicioBanca.Repository/MicroservicioBanca.Repository.csproj", "src/MicroservicioBanca.Repository/"]
 COPY ["src/MicroservicioBanca.Domain/MicroservicioBanca.Domain.csproj", "src/MicroservicioBanca.Domain/"]
 COPY ["src/MicroservicioBanca.Domain.Shared/MicroservicioBanca.Domain.Shared.csproj", "src/MicroservicioBanca.Domain.Shared/"]
-COPY ["src/MicroservicioBanca.Application.Contracts/MicroservicioBanca.Application.Contracts.csproj", "src/MicroservicioBanca.Application.Contracts/"]
 COPY ["src/MicroservicioBanca.Application/MicroservicioBanca.Application.csproj", "src/MicroservicioBanca.Application/"]
+COPY ["src/MicroservicioBanca.Application.Contracts/MicroservicioBanca.Application.Contracts.csproj", "src/MicroservicioBanca.Application.Contracts/"]
 RUN dotnet restore "host/MicroservicioBanca.WebApi/MicroservicioBanca.WebApi.csproj"
 COPY . .
 WORKDIR "/src/host/MicroservicioBanca.WebApi"

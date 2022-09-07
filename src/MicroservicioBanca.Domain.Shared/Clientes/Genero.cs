@@ -1,4 +1,4 @@
-﻿namespace MicroservicioBanca.Domain.Shared.Clientes
+﻿namespace MicroservicioBanca.Clientes
 {
     public enum Genero
     {

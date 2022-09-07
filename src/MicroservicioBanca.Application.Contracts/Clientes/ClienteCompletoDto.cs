@@ -1,7 +1,7 @@
-﻿using MicroservicioBanca.Application.Contracts.Cuentas;
+﻿using MicroservicioBanca.Cuentas;
 using System.Collections.Generic;
 
-namespace MicroservicioBanca.Application.Contracts.Clientes
+namespace MicroservicioBanca.Clientes
 {
     public class ClienteCompletoDto
     {

@@ -5,6 +5,7 @@
 		<UserSecretsId>0d21b845-eb32-42a0-b217-7ce5b4446480</UserSecretsId>
 		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
 		<DockerfileContext>..\..</DockerfileContext>
+		<RootNamespace>MicroservicioBanca</RootNamespace>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -17,9 +18,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\src\MicroservicioBanca.Application\MicroservicioBanca.Application.csproj" />
-		<ProjectReference Include="..\..\src\MicroservicioBanca.Dependencies\MicroservicioBanca.Dependencies.csproj" />
-		<ProjectReference Include="..\..\src\MicroservicioBanca.Repository\MicroservicioBanca.Repository.csproj" />
+	  <ProjectReference Include="..\..\src\MicroservicioBanca.Application.Contracts\MicroservicioBanca.Application.Contracts.csproj" />
+	  <ProjectReference Include="..\..\src\MicroservicioBanca.Dependencies\MicroservicioBanca.Dependencies.csproj" />
+	  <ProjectReference Include="..\..\src\MicroservicioBanca.Repository\MicroservicioBanca.Repository.csproj" />
 	</ItemGroup>
 
 </Project>

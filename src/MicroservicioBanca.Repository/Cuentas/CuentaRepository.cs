@@ -1,10 +1,9 @@
-﻿using MicroservicioBanca.Domain.Cuentas;
-using MicroservicioBanca.Repository.EntityFrameworkCore;
+﻿using MicroservicioBanca.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading.Tasks;
 
-namespace MicroservicioBanca.Repository.Cuentas
+namespace MicroservicioBanca.Cuentas
 {
     public class CuentaRepository : GenericRepository<Cuenta, Guid>, ICuentaRepository
     {

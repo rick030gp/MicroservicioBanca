@@ -1,10 +1,8 @@
-﻿using MicroservicioBanca.Domain.Cuentas;
-using MicroservicioBanca.Domain.Shared.Clientes;
-using MicroservicioBanca.Domain.Shared.Cuentas;
+﻿using MicroservicioBanca.Cuentas;
 using System;
 using System.Collections.Generic;
 
-namespace MicroservicioBanca.Domain.Clientes
+namespace MicroservicioBanca.Clientes
 {
     public class Cliente : Persona
     {
@@ -12,10 +10,6 @@ namespace MicroservicioBanca.Domain.Clientes
         public string Contrasenia { get; private set; }
         public bool Estado { get; set; } = true;
         public List<Cuenta> Cuentas { get; set; }
-
-        private Cliente()
-        {
-        }
 
         internal Cliente(
             Guid id,

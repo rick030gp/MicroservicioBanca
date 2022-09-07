@@ -1,14 +1,11 @@
 ﻿using AutoMapper;
-using MicroservicioBanca.Application.Contracts.Cuentas;
-using MicroservicioBanca.Domain.Cuentas;
-using MicroservicioBanca.Domain.Shared;
-using MicroservicioBanca.Domain.Shared.Response;
-using MicroservicioBanca.Domain.Shared.Response.Models;
+using MicroservicioBanca.Response;
+using MicroservicioBanca.Response.Models;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace MicroservicioBanca.Application.Cuentas
+namespace MicroservicioBanca.Cuentas
 {
     public class CuentaAppService : ICuentaAppService
     {
@@ -31,7 +28,11 @@ namespace MicroservicioBanca.Application.Cuentas
             ResponseManager<string> response = new();
             try
             {
-                await _cuentaManager.DeleteAsync(numeroCuenta);
+                var cuenta = await _cuentaRepository.GetByAccountNumberAsync(numeroCuenta);
+                if (cuenta == null)
+                    return response.OnError(MicroservicioBancaErrors.AccountDoesNotExistError);
+
+                await _cuentaRepository.RemoveAsync(cuenta);
                 return response.OnSuccess("Cuenta eliminada exitosamente");
             }
             catch (MicroservicioBancaException ex)
@@ -92,6 +93,7 @@ namespace MicroservicioBanca.Application.Cuentas
                     input.SaldoInicial,
                     input.Estado);
 
+                await _cuentaRepository.InsertAsync(cuenta);
                 return response.OnSuccess(_mapper.Map<CuentaDto>(cuenta));
             }
             catch (MicroservicioBancaException ex)
@@ -114,6 +116,7 @@ namespace MicroservicioBanca.Application.Cuentas
                     input.TipoCuenta,
                     input.Estado);
 
+                await _cuentaRepository.UpdateAsync(cuenta);
                 return response.OnSuccess(_mapper.Map<CuentaDto>(cuenta));
             }
             catch (MicroservicioBancaException ex)

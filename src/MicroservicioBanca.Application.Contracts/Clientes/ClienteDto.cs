@@ -1,6 +1,4 @@
-﻿using MicroservicioBanca.Domain.Shared.Clientes;
-
-namespace MicroservicioBanca.Application.Contracts.Clientes
+﻿namespace MicroservicioBanca.Clientes
 {
     public class ClienteDto
     {

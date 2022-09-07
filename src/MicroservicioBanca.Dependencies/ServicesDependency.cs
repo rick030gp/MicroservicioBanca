@@ -1,18 +1,9 @@
-﻿using MicroservicioBanca.Application.Clientes;
-using MicroservicioBanca.Application.Contracts.Clientes;
-using MicroservicioBanca.Application.Contracts.Cuentas;
-using MicroservicioBanca.Application.Contracts.Movimientos;
-using MicroservicioBanca.Application.Cuentas;
-using MicroservicioBanca.Application.Movimientos;
-using MicroservicioBanca.Domain.Clientes;
-using MicroservicioBanca.Domain.Cuentas;
-using MicroservicioBanca.Domain.Movimientos;
-using MicroservicioBanca.Repository.Clientes;
-using MicroservicioBanca.Repository.Cuentas;
-using MicroservicioBanca.Repository.Movimientos;
+﻿using MicroservicioBanca.Clientes;
+using MicroservicioBanca.Cuentas;
+using MicroservicioBanca.Movimientos;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace MicroservicioBanca.Dependencies
+namespace MicroservicioBanca
 {
     public static class ServicesDependency
     {

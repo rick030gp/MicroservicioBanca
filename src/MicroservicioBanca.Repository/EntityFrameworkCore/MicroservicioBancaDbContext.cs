@@ -1,10 +1,10 @@
-﻿using MicroservicioBanca.Domain.Clientes;
-using MicroservicioBanca.Domain.Cuentas;
-using MicroservicioBanca.Domain.Movimientos;
+﻿using MicroservicioBanca.Clientes;
+using MicroservicioBanca.Cuentas;
+using MicroservicioBanca.Movimientos;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
-namespace MicroservicioBanca.Repository.EntityFrameworkCore
+namespace MicroservicioBanca.EntityFrameworkCore
 {
     public class MicroservicioBancaDbContext : DbContext, IMicroservicioBancaDbContext
     {

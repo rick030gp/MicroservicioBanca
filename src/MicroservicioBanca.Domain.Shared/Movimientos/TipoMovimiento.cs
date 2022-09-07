@@ -1,4 +1,4 @@
-﻿namespace MicroservicioBanca.Domain.Shared.Cuentas
+﻿namespace MicroservicioBanca.Movimientos
 {
     public enum TipoMovimiento
     {

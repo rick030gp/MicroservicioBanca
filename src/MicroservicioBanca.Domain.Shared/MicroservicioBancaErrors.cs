@@ -1,6 +1,6 @@
-﻿using MicroservicioBanca.Domain.Shared.Response.Models;
+﻿using MicroservicioBanca.Response.Models;
 
-namespace MicroservicioBanca.Domain.Shared
+namespace MicroservicioBanca
 {
     public static class MicroservicioBancaErrors
     {
@@ -53,6 +53,11 @@ namespace MicroservicioBanca.Domain.Shared
         {
             Code = "ECT008",
             Message = "Rango no válido entre las fechas"
+        };
+        public static readonly Error UpdateSameMovementError = new()
+        {
+            Code = "ECT009",
+            Message = "La transacción a actualizar no tiene cambios en su valor"
         };
         public static readonly Error GeneralError = new()
         {

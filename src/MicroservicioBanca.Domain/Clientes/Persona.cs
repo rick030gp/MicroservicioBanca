@@ -1,6 +1,4 @@
-﻿using MicroservicioBanca.Domain.Shared.Clientes;
-
-namespace MicroservicioBanca.Domain.Clientes
+﻿namespace MicroservicioBanca.Clientes
 {
     public class Persona
     {

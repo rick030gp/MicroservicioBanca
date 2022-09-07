@@ -1,11 +1,9 @@
-﻿using MicroservicioBanca.Domain.Cuentas;
-using MicroservicioBanca.Domain.Shared;
-using MicroservicioBanca.Domain.Shared.Cuentas;
+﻿using MicroservicioBanca.Cuentas;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MicroservicioBanca.Domain.Movimientos
+namespace MicroservicioBanca.Movimientos
 {
     public class MovimientoManager
     {
@@ -32,7 +30,7 @@ namespace MicroservicioBanca.Domain.Movimientos
             if (!cuenta.Estado)
                 throw new MicroservicioBancaException(MicroservicioBancaErrors.InactiveAccountError);
 
-            var movimiento = await SaveMovementAsync(cuenta, valor);
+            var movimiento = await CommitMovementUpdatingAccountAsync(cuenta, valor);
             return movimiento;
         }
 
@@ -53,7 +51,10 @@ namespace MicroservicioBanca.Domain.Movimientos
             if (movimiento == null)
                 throw new MicroservicioBancaException(MicroservicioBancaErrors.MovementDoesNotExistError);
 
-            movimiento = await SaveMovementAsync(cuenta, valor - movimiento.Valor);
+            if (valor - movimiento.Valor == 0)
+                throw new MicroservicioBancaException(MicroservicioBancaErrors.UpdateSameMovementError);
+
+            movimiento = await CommitMovementUpdatingAccountAsync(cuenta, valor - movimiento.Valor);
 
             return movimiento;
         }
@@ -74,12 +75,12 @@ namespace MicroservicioBanca.Domain.Movimientos
             if (movimiento == null)
                 throw new MicroservicioBancaException(MicroservicioBancaErrors.MovementDoesNotExistError);
 
-            movimiento = await SaveMovementAsync(cuenta, movimiento.Valor * -1);
+            movimiento = await CommitMovementUpdatingAccountAsync(cuenta, movimiento.Valor * -1);
 
             return movimiento;
         }
 
-        private async Task<Movimiento> SaveMovementAsync(Cuenta cuenta, float valor)
+        private async Task<Movimiento> CommitMovementUpdatingAccountAsync(Cuenta cuenta, float valor)
         {
             if (valor == 0)
                 throw new MicroservicioBancaException(MicroservicioBancaErrors.MovementZeroError);

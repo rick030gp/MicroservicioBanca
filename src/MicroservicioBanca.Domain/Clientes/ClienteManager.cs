@@ -1,9 +1,7 @@
-﻿using MicroservicioBanca.Domain.Shared;
-using MicroservicioBanca.Domain.Shared.Clientes;
-using System;
+﻿using System;
 using System.Threading.Tasks;
 
-namespace MicroservicioBanca.Domain.Clientes
+namespace MicroservicioBanca.Clientes
 {
     public class ClienteManager
     {
@@ -40,7 +38,6 @@ namespace MicroservicioBanca.Domain.Clientes
                 contrasenia,
                 estado);
 
-            await _clienteRepository.InsertAsync(cliente);
             return cliente;
         }
 
@@ -58,7 +55,6 @@ namespace MicroservicioBanca.Domain.Clientes
             if (cliente == null)
                 throw new MicroservicioBancaException(MicroservicioBancaErrors.ClientNotFoundError);
 
-
             cliente.Nombre = nombre ?? cliente.Nombre;
             cliente.Genero = genero ?? cliente.Genero;
             cliente.Edad = edad ?? cliente.Edad;
@@ -67,17 +63,7 @@ namespace MicroservicioBanca.Domain.Clientes
             cliente.CambiarContrasenia(contrasenia ?? cliente.Contrasenia);
             cliente.Estado = estado ?? cliente.Estado;
 
-            await _clienteRepository.UpdateAsync(cliente);
             return cliente;
-        }
-
-        public async Task DeleteAsync(string identificacion)
-        {
-            var cliente = await _clienteRepository.GetByIdentificationAsync(identificacion);
-            if (cliente == null)
-                throw new MicroservicioBancaException(MicroservicioBancaErrors.ClientNotFoundError);
-
-            await _clienteRepository.RemoveAsync(cliente);
         }
     }
 }

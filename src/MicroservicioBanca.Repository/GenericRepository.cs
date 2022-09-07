@@ -1,10 +1,9 @@
-﻿using MicroservicioBanca.Domain;
-using MicroservicioBanca.Repository.EntityFrameworkCore;
+﻿using MicroservicioBanca.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace MicroservicioBanca.Repository
+namespace MicroservicioBanca
 {
     public class GenericRepository<TEntity, TKey> : IGenericRepository<TEntity, TKey> where TEntity : class
     {

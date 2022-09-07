@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MicroservicioBanca.Application.Contracts.Movimientos
+namespace MicroservicioBanca.Movimientos
 {
     public class AddMovementDto
     {
