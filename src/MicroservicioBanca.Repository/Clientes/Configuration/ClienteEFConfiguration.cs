@@ -1,12 +1,8 @@
-﻿using MicroservicioBanca.Domain;
-using MicroservicioBanca.Domain.Clientes;
-using MicroservicioBanca.Domain.Shared;
-using MicroservicioBanca.Domain.Shared.Clientes;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 
-namespace MicroservicioBanca.Repository.Clientes.Configuration
+namespace MicroservicioBanca.Clientes.Configuration
 {
     public class ClienteEFConfiguration : IEntityTypeConfiguration<Cliente>
     {

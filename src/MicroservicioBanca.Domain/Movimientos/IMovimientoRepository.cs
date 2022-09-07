@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MicroservicioBanca.Domain.Movimientos
+namespace MicroservicioBanca.Movimientos
 {
     public interface IMovimientoRepository : IGenericRepository<Movimiento, Guid>
     {

@@ -1,5 +1,8 @@
-﻿namespace MicroservicioBanca.Domain
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace MicroservicioBanca
 {
+    [ExcludeFromCodeCoverage]
     public static class MicroservicioBancaDbProperties
     {
         public static string DbTablePrefix { get; set; } = "";

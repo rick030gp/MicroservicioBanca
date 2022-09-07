@@ -1,12 +1,9 @@
-﻿using MicroservicioBanca.Domain;
-using MicroservicioBanca.Domain.Cuentas;
-using MicroservicioBanca.Domain.Shared;
-using MicroservicioBanca.Domain.Shared.Cuentas;
+﻿using MicroservicioBanca.Cuentas;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 
-namespace MicroservicioBanca.Repository.Movimientos.Configuration
+namespace MicroservicioBanca.Movimientos.Configuration
 {
     public class CuentaEfConfiguration : IEntityTypeConfiguration<Cuenta>
     {

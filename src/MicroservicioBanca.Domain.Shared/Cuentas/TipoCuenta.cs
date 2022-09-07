@@ -1,4 +1,4 @@
-﻿namespace MicroservicioBanca.Domain.Shared.Cuentas
+﻿namespace MicroservicioBanca.Cuentas
 {
     public enum TipoCuenta
     {

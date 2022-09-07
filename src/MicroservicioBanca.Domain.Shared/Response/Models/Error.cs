@@ -1,4 +1,4 @@
-﻿namespace MicroservicioBanca.Domain.Shared.Response.Models
+﻿namespace MicroservicioBanca.Response.Models
 {
     public class Error
     {

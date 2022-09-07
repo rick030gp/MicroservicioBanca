@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace MicroservicioBanca.Domain.Cuentas
+namespace MicroservicioBanca.Cuentas
 {
     public interface ICuentaRepository : IGenericRepository<Cuenta, Guid>
     {

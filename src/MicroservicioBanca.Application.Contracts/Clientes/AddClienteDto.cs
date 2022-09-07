@@ -1,7 +1,6 @@
-﻿using MicroservicioBanca.Domain.Shared.Clientes;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace MicroservicioBanca.Application.Contracts.Clientes
+namespace MicroservicioBanca.Clientes
 {
     public class AddClienteDto
     {

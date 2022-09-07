@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MicroservicioBanca.Domain.Shared\MicroservicioBanca.Domain.Shared.csproj" />
+    <ProjectReference Include="..\..\src\MicroservicioBanca.Domain\MicroservicioBanca.Domain.csproj" />
   </ItemGroup>
 
 </Project>

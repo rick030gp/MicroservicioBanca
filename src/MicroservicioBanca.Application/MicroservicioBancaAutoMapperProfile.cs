@@ -1,13 +1,10 @@
 ﻿using AutoMapper;
-using MicroservicioBanca.Application.Contracts.Clientes;
-using MicroservicioBanca.Application.Contracts.Cuentas;
-using MicroservicioBanca.Application.Contracts.Movimientos;
-using MicroservicioBanca.Domain.Clientes;
-using MicroservicioBanca.Domain.Cuentas;
-using MicroservicioBanca.Domain.Movimientos;
+using MicroservicioBanca.Clientes;
+using MicroservicioBanca.Cuentas;
+using MicroservicioBanca.Movimientos;
 using System.Linq;
 
-namespace MicroservicioBanca.Application
+namespace MicroservicioBanca
 {
     public class MicroservicioBancaAutoMapperProfile : Profile
     {
@@ -17,7 +14,10 @@ namespace MicroservicioBanca.Application
             CreateMap<Cuenta, ReporteCuentaDto>()
                 .ForMember(dest =>
                     dest.Movimiento,
-                    opt => opt.MapFrom(src => src.Movimientos.Sum(m => m.Valor)));
+                    opt => opt.MapFrom(src => src.Movimientos.Sum(m => m.Valor)))
+                .ForMember(dest =>
+                    dest.SaldoDisponible,
+                    opt => opt.MapFrom(src => src.Saldo));
             CreateMap<Cuenta, CuentaDto>();
             CreateMap<Movimiento, MovimientoDto>();
         }

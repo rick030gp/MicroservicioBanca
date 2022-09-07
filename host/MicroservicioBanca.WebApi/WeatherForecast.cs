@@ -1,6 +1,6 @@
 using System;
 
-namespace MicroservicioBanca.WebApi
+namespace MicroservicioBanca
 {
     public class WeatherForecast
     {

@@ -1,8 +1,8 @@
-﻿using MicroservicioBanca.Domain.Shared.Response.Models;
+﻿using MicroservicioBanca.Response.Models;
 using System;
 using System.Runtime.Serialization;
 
-namespace MicroservicioBanca.Domain.Shared
+namespace MicroservicioBanca
 {
     [Serializable]
     public class MicroservicioBancaException : Exception

@@ -1,8 +1,7 @@
-﻿using MicroservicioBanca.Domain.Movimientos;
-using MicroservicioBanca.Repository.EntityFrameworkCore;
+﻿using MicroservicioBanca.EntityFrameworkCore;
 using System;
 
-namespace MicroservicioBanca.Repository.Movimientos
+namespace MicroservicioBanca.Movimientos
 {
     public class MovimientoRepository : GenericRepository<Movimiento, Guid>, IMovimientoRepository
     {

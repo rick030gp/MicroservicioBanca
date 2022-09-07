@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace MicroservicioBanca.Repository.Migrations
+namespace MicroservicioBanca.Migrations
 {
     public partial class Initial : Migration
     {

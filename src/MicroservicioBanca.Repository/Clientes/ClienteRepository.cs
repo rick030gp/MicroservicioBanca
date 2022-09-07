@@ -1,11 +1,10 @@
-﻿using MicroservicioBanca.Domain.Clientes;
-using MicroservicioBanca.Repository.EntityFrameworkCore;
+﻿using MicroservicioBanca.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MicroservicioBanca.Repository.Clientes
+namespace MicroservicioBanca.Clientes
 {
     public class ClienteRepository : GenericRepository<Cliente, Guid>, IClienteRepository
     {

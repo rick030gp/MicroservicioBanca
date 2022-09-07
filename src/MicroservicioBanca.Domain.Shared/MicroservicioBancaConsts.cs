@@ -1,4 +1,4 @@
-﻿namespace MicroservicioBanca.Domain.Shared
+﻿namespace MicroservicioBanca
 {
     public static class MicroservicioBancaConsts
     {

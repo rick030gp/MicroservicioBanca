@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace MicroservicioBanca.Domain
+namespace MicroservicioBanca
 {
     public interface IGenericRepository<TEntity, TKey> where TEntity : class
     {

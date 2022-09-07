@@ -1,9 +1,8 @@
-﻿using MicroservicioBanca.Domain.Movimientos;
-using MicroservicioBanca.Domain.Shared.Cuentas;
+﻿using MicroservicioBanca.Movimientos;
 using System;
 using System.Collections.Generic;
 
-namespace MicroservicioBanca.Domain.Cuentas
+namespace MicroservicioBanca.Cuentas
 {
     public class Cuenta
     {

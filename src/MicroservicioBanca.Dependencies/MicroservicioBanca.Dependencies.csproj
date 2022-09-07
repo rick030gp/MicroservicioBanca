@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>MicroservicioBanca</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -9,7 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MicroservicioBanca.Application.Contracts\MicroservicioBanca.Application.Contracts.csproj" />
     <ProjectReference Include="..\MicroservicioBanca.Application\MicroservicioBanca.Application.csproj" />
     <ProjectReference Include="..\MicroservicioBanca.Repository\MicroservicioBanca.Repository.csproj" />
   </ItemGroup>

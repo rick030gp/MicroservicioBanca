@@ -1,7 +1,5 @@
 using AutoMapper;
-using MicroservicioBanca.Application;
-using MicroservicioBanca.Dependencies;
-using MicroservicioBanca.Repository.EntityFrameworkCore;
+using MicroservicioBanca.EntityFrameworkCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -10,7 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 
-namespace MicroservicioBanca.WebApi
+namespace MicroservicioBanca
 {
     public class Startup
     {

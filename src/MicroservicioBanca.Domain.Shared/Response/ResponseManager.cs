@@ -1,7 +1,7 @@
-﻿using MicroservicioBanca.Domain.Shared.Response.Contracts;
-using MicroservicioBanca.Domain.Shared.Response.Models;
+﻿using MicroservicioBanca.Response.Contracts;
+using MicroservicioBanca.Response.Models;
 
-namespace MicroservicioBanca.Domain.Shared.Response
+namespace MicroservicioBanca.Response
 {
     public class ResponseManager<T> : IResponseManager<T>
     {

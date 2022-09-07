@@ -1,9 +1,9 @@
-﻿using MicroservicioBanca.Domain.Shared.Response.Models;
+﻿using MicroservicioBanca.Response.Models;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace MicroservicioBanca.Application.Contracts.Clientes
+namespace MicroservicioBanca.Clientes
 {
     public interface IClienteAppService
     {

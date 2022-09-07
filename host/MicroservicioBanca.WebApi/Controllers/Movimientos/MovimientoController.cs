@@ -1,10 +1,10 @@
-﻿using MicroservicioBanca.Application.Contracts.Movimientos;
-using MicroservicioBanca.Domain.Shared.Response.Models;
+﻿using MicroservicioBanca.Movimientos;
+using MicroservicioBanca.Response.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace MicroservicioBanca.WebApi.Controllers.Movimientos
+namespace MicroservicioBanca.Controllers.Movimientos
 {
     [ApiController]
     [Route("api/movimientos")]

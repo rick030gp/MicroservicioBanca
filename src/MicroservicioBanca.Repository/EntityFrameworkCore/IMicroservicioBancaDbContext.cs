@@ -1,6 +1,6 @@
-﻿using MicroservicioBanca.Domain.Clientes;
-using MicroservicioBanca.Domain.Cuentas;
-using MicroservicioBanca.Domain.Movimientos;
+﻿using MicroservicioBanca.Clientes;
+using MicroservicioBanca.Cuentas;
+using MicroservicioBanca.Movimientos;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Infrastructure;
@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace MicroservicioBanca.Repository.EntityFrameworkCore
+namespace MicroservicioBanca.EntityFrameworkCore
 {
     public interface IMicroservicioBancaDbContext
     {

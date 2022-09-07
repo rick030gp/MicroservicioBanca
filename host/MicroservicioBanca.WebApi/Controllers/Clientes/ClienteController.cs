@@ -1,11 +1,11 @@
-﻿using MicroservicioBanca.Application.Contracts.Clientes;
-using MicroservicioBanca.Domain.Shared.Response.Models;
+﻿using MicroservicioBanca.Clientes;
+using MicroservicioBanca.Response.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace MicroservicioBanca.WebApi.Controllers.Clientes
+namespace MicroservicioBanca.Controllers.Clientes
 {
     [ApiController]
     [Route("api/clientes")]
